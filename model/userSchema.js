@@ -1,32 +1,21 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const  jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const validator =require("validator");
 
 const userSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
+  name: {
     type: String,
     required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   password: {
     type: String,
     required: true,
-  },
-  isVerifed: {
-    type: Boolean,
-    default: false,
-  },
-  resetLink: {
-    data: String,
-    default: "",
   },
   tokens: [
     {
